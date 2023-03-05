@@ -19,5 +19,5 @@ def spam_from_msg():
 TODO:
 1. Fix everything 
 2. Build GUI
-3. Complete the project
+3. Complete the project.
 '''
