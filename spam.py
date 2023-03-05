@@ -13,3 +13,11 @@ def spam_from_msg():
         pyautogui.typewrite(word)
 
         pyautogui.press("enter")
+
+
+''' 
+TODO:
+1. Fix everything 
+2. Build GUI
+3. Complete the project
+'''
