@@ -9,7 +9,9 @@ import sys
 parser = argparse.ArgumentParser(
     description='Pass 2 args one as a string(text) and other a number(n) to spam the text n number of times, if unknown type of arg is passed a random string(message) will be spammed random number of times.')
 parser.add_argument(
-    'help', help='if arg1 is a nummer this should be a string or vice versa')
+    'arg1', help=' should be a string or number')
+parser.add_argument(
+    'arg2', help='if arg1 is a nummer this should be a string or vice versa')
 args = parser.parse_args()
 argss = sys.argv
 
