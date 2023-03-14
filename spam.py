@@ -7,11 +7,18 @@ import sys
 
 
 parser = argparse.ArgumentParser(
-    description='Pass 2 args one as a string(text) and other a number(n) to spam the text n number of times, if unknown type of arg is passed a random string(message) will be spammed random number of times.')
-parser.add_argument(
-    'arg1', help=' should be a string or number')
-parser.add_argument(
-    'arg2', help='if arg1 is a nummer this should be a string or vice versa')
+    description='Spam some text a given number of times',
+    add_help=True,
+    epilog="Want to add something?, visit https://github.com/Abhinay-Katta/Spam-with-Python",
+    prog="spam",
+    usage="%(prog)s [-h|--help] [-v|--version] <string> <number>"
+)
+parser.add_argument('text', type=str, help='The text to spam')
+parser.add_argument('n', type=int, help='The number of times to spam the text')
+parser.add_argument('-v', '--version', action='version',
+                    version='%(prog)s 1.6')
+parser.add_help
+
 args = parser.parse_args()
 argss = sys.argv
 
