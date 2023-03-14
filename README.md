@@ -16,7 +16,7 @@
    - string(without spaces) is the text you want to spam
    - number is the number of times you want to spam the text
    - if no args are given, a random string will be spammed random number of times(range:[10,100])
-   '''
+   ```
    spam -h|--help
-   '''
+   ```
    - to see available options
