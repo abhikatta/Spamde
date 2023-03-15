@@ -1,1 +1,1 @@
-@py.exe D:\Projects\python\Spam-with-Python\spam.py %*
+@py.exe "%~dp0spam.py" %*

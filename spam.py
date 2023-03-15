@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(
     add_help=True,
     epilog="Want to add something?, visit https://github.com/Abhinay-Katta/Spam-with-Python",
     prog="spam",
-    usage="%(prog)s [-h|--help] [-v|--version] <string> <number>"
+    usage="%(prog)s [-h|--help] [-v|--version] <number> <string>"
 )
 parser.add_argument('text', type=str, help='The text to spam')
 parser.add_argument('n', type=int, help='The number of times to spam the text')
