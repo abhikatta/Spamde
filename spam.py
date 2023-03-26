@@ -24,10 +24,10 @@ argss = sys.argv
 
 spam_count = random.randint(10, 100)
 for arg in argss[1:]:
-    if arg.isdigit() == True:
-        spam_count = int(arg)
-    elif arg.isalpha() == True:
+    if not arg.isdigit():
         msg = arg
+    elif arg.isdigit() == True:
+        spam_count = int(arg)
     else:
         msg = ''.join(random.choices(string.ascii_letters,
                                      k=random.randint(1, 20))).lower()
