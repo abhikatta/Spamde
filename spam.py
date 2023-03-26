@@ -32,7 +32,7 @@ for arg in argss[1:]:
         msg = ''.join(random.choices(string.ascii_letters,
                                      k=random.randint(1, 20))).lower()
 
-print("You have 3 seconds")
+print("Quickly open the text area where you want to spam, you have 3 seconds!")
 time.sleep(3)
 while (spam_count > 0):
     pyautogui.typewrite(msg)
