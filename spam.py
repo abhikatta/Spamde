@@ -24,7 +24,7 @@ argss = sys.argv
 
 spam_count = random.randint(10, 100)
 for arg in argss[1:]:
-    if not arg.isdigit():
+    if not arg.isdigit() or arg.isspace():
         msg = arg
     elif arg.isdigit() == True:
         spam_count = int(arg)
