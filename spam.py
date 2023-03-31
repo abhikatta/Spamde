@@ -13,7 +13,8 @@ parser = argparse.ArgumentParser(
     prog="spam",
     usage="%(prog)s [-h|--help] [-v|--version] <number> <string>"
 )
-parser.add_argument('text', type=str, help='The text to spam')
+parser.add_argument('"text"', type=str,
+                    help='The text to spam. Give it in "''" if it contains spaces. None spaces only take a single word')
 parser.add_argument('n', type=int, help='The number of times to spam the text')
 parser.add_argument('-v', '--version', action='version',
                     version='%(prog)s 1.6')
@@ -21,11 +22,11 @@ parser.add_help
 
 args = parser.parse_args()
 argss = sys.argv
-
+msg = ''
 spam_count = random.randint(10, 100)
 for arg in argss[1:]:
-    if not arg.isdigit() or arg.isspace():
-        msg = arg
+    if not arg.isdigit():
+        msg = msg+arg
     elif arg.isdigit() == True:
         spam_count = int(arg)
     else:
