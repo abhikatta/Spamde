@@ -13,8 +13,8 @@ parser = argparse.ArgumentParser(
     prog="spam",
     usage="%(prog)s [-h|--help] [-v|--version] <number> <string>"
 )
-parser.add_argument('"text"', type=str,
-                    help='The text to spam. Give it in "''" if it contains spaces. None spaces only take a single word')
+parser.add_argument('text', type=str,
+                    help="The text to spam. Give it in \"\" or \'\' if it contains spaces. Non spaces only take a single word.")
 parser.add_argument('n', type=int, help='The number of times to spam the text')
 parser.add_argument('-v', '--version', action='version',
                     version='%(prog)s 1.6')
