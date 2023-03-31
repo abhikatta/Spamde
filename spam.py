@@ -22,11 +22,10 @@ parser.add_help
 
 args = parser.parse_args()
 argss = sys.argv
-msg = ''
 spam_count = random.randint(10, 100)
 for arg in argss[1:]:
     if not arg.isdigit():
-        msg = msg+arg
+        msg = arg
     elif arg.isdigit() == True:
         spam_count = int(arg)
     else:
