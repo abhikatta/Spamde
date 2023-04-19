@@ -11,10 +11,10 @@ parser = argparse.ArgumentParser(
     add_help=True,
     epilog="Want to add something?, visit https://github.com/Abhinay-Katta/Spam-with-Python",
     prog="spam",
-    usage="%(prog)s [-h|--help] [-v|--version] <number> <string>"
+    usage="%(prog)s [-h|--help] [-v|--version] <string> <number>"
 )
 parser.add_argument('text', type=str,
-                    help="The text to spam. Give it in \"\" or \'\' if it contains spaces. Non spaces only take a single word.")
+                    help="The text to spam. Give it in \"\" if it contains spaces. Non spaces only take a single word.")
 parser.add_argument('n', type=int, help='The number of times to spam the text')
 parser.add_argument('-v', '--version', action='version',
                     version='%(prog)s 1.6')
