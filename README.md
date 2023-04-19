@@ -20,3 +20,5 @@
    spam -h|--help
    ```
    - to see available options
+
+### Download the exe(~85mb) from <a href='https://github.com/Abhinay-Katta/Spam-with-Python/releases/download/v1.0.0/spamde.exe'>here.</a>
