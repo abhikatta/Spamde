@@ -1,6 +1,7 @@
 import pyautogui as pag
 import sys
 import time
+import threading
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon, QFont, QPixmap
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel, QLineEdit
@@ -32,9 +33,13 @@ class App(QWidget):
 
         self.warn_text = QLabel(
             "Quickly open the text area where you want to spam after\n clicking the above button, you'd have 4 seconds!", self)
-        self.warn_text .setAlignment(Qt.AlignmentFlag(5))
+        self.warn_text.setAlignment(Qt.AlignmentFlag(5))
         self.warn_text.setFont(
             QFont("Cascadia Code", pointSize=8))
+
+        self.error_text = QLabel(" ")
+        self.error_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.warn_text.setFont(QFont("Cascadia Code", pointSize=8))
 
         layout = QVBoxLayout(self)
         layout.addWidget(self.msg_label)
@@ -44,38 +49,45 @@ class App(QWidget):
         layout.addWidget(self.start_spam_button,
                          alignment=Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(self.warn_text)
+        layout.addWidget(self.error_text)
         self.window_settings()
 
     def window_settings(self):
         self.setWindowTitle('Spamde')
-        self.setMaximumSize(360, 170)
-        self.setMinimumSize(360, 170)
+        self.setWindowIcon(QIcon('spamde.ico'))
+        self.set_taskbar_icon()
+        self.adjustSize()
 
-    #     self.setWindowIcon(QIcon('spamde.ico'))
-    #     self.set_taskbar_icon()
-
-    # def set_taskbar_icon(self):
-    #     icon = QIcon(QPixmap('spamde.ico'))
-    #     try:
-    #         if (sys.platform == 'win32'):
-    #             import ctypes
-    #             ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(
-    #                 'myappid')
-    #             self.setWindowIcon(icon)
-    #     except:
-    #         pass
+    def set_taskbar_icon(self):
+        icon = QIcon(QPixmap('spamde.ico'))
+        try:
+            if (sys.platform == 'win32'):
+                import ctypes
+                ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(
+                    'myappid')
+                self.setWindowIcon(icon)
+        except:
+            pass
 
     def spam(self):
-        try:
-            msg = self.msg_label_input.text()
-            count = int(self.count_label_input.text())
-            time.sleep(4)
-            while (count > 0):
-                pag.typewrite(msg)
-                pag.press('enter')
-                count -= 1
-        except ValueError:
-            pass
+        def _spamm():
+            try:
+                self.start_spam_button.setEnabled(False)
+                self.msg = self.msg_label_input.text()
+                self.count = int(self.count_label_input.text())
+                time.sleep(4)
+                while (self.count > 0):
+                    pag.typewrite(self.msg)
+                    pag.press('enter')
+                    self.count -= 1
+            except ValueError:
+                self.error_text.setText("Enter a number, you du*b bi**h!")
+            time.sleep(3)
+            self.error_text.setText(" ")
+            self.start_spam_button.setEnabled(True)
+
+        self.exec_spam = threading.Thread(target=_spamm)
+        self.exec_spam.start()
 
 
 if __name__ == '__main__':
