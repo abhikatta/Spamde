@@ -1,3 +1,2 @@
 pip install -r requirements.txt
-cd /App
-pyinstaller --onefile --noconsole spamde.py
+pyinstaller --onefile --noconsole app/spamde.py
