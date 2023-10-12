@@ -2,4 +2,4 @@
 @REM @python3.exe "%~dp0spam.py" %*
 
 @REM if you installed python from www.python.org uncomment this line:
-@py "%~dp0spam.py" %*
+@REM @py "%~dp0spam.py" %*
